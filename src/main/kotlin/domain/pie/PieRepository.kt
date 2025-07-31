@@ -7,22 +7,6 @@ import java.sql.ResultSet
 
 @Repository
 class PieRepository(private val jdbcTemplate: JdbcTemplate) {
-//    fun findPies(orderedFor: String): List<MeetPie> {
-//        val sql = "SELECT * FROM education.activity"
-//
-//        return try {
-//            jdbcTemplate.query(
-//                sql,
-//                { rs: ResultSet, rowNum: Int ->
-//                    MeetPie(rs.getInt("position"), rs.getString("title"))
-//                }
-//            )
-//        } catch (e: Exception) {
-//            e.printStackTrace()
-//            emptyList()
-//        }
-//    }
-
 
     fun findPies(orderedFor: String): List<MeetPie> {
         val sql = "SELECT * FROM smarkov.pie WHERE ordered_for = ?"
