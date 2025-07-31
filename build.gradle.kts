@@ -19,9 +19,12 @@ dependencies {
 
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-//    // Postgres
-//    implementation("org.postgresql:postgresql:42.6.0")
+    implementation("org.springframework.boot:spring-boot-starter-jdbc")
+
+    // Postgres
+    implementation("org.postgresql:postgresql:42.7.3")
 
     // Тесты
     testImplementation("org.springframework.boot:spring-boot-starter-test")

@@ -9,10 +9,15 @@ import java.time.LocalDateTime
 
 @RestController
 @RequestMapping("/pies")
-class PieController {
+class PieController(private val pieRepository: PieRepository) {
 
     @GetMapping("/meet")
     fun getPie(@RequestParam weight: Int, @RequestParam orderedFor: String): MeetPie {
-        return MeetPie(weight = 100, orderedFor = "Me", bakedAt = LocalDateTime.now())
+        return MeetPie(weight = weight, orderedFor = orderedFor, bakedAt = LocalDateTime.now())
+    }
+
+    @GetMapping("/all")
+    fun getPies(@RequestParam orderedFor: String): List<MeetPie> {
+        return pieRepository.findPies(orderedFor)
     }
 }

@@ -1,2 +1,7 @@
-GET http://localhost:8080/pies/meet?weight=100&orderedFor=Me
+###
+GET http://localhost:8080/pies/meet?weight=999&orderedFor=Serhos
+Content-Type: application/json
+
+###
+GET http://localhost:8080/pies/all?orderedFor=Customer%2073
 Content-Type: application/json
