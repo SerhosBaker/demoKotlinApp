@@ -13,11 +13,17 @@ class PieController(private val pieRepository: PieRepository) {
 
     @GetMapping("/meet")
     fun getPie(@RequestParam weight: Int, @RequestParam orderedFor: String): MeetPie {
-        return MeetPie(weight = weight, orderedFor = orderedFor, bakedAt = LocalDateTime.now())
+        return MeetPie(weight = weight, orderedFor = orderedFor, bakedAt = LocalDateTime.now(), id = "1")
     }
 
     @GetMapping("/all")
     fun getPies(@RequestParam orderedFor: String): List<MeetPie> {
         return pieRepository.findPies(orderedFor)
+    }
+
+    fun doPiePreparation() {
+        println("Preparing pie...")
+        var a: Int = 1
+        a++; // можно переопределить var, но нельзя переопределить val
     }
 }

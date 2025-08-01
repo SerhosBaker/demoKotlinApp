@@ -5,5 +5,6 @@ import java.time.LocalDateTime
 data class MeetPie(
     val weight: Int,
     val orderedFor: String,
-    val bakedAt: LocalDateTime = LocalDateTime.now()
-)
+    val bakedAt: LocalDateTime = LocalDateTime.now(),
+    override val id: String
+) : Pie(id)

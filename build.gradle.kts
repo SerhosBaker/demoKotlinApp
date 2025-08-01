@@ -20,6 +20,8 @@ dependencies {
     // Kotlin
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.jetbrains.kotlin:kotlin-test-junit5")
+    implementation("junit:junit:4.13.2")
 
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
 
