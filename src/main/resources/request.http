@@ -1,7 +1,7 @@
 ###
-GET http://localhost:8080/pies/meet?weight=999&orderedFor=Serhos
+POST http://localhost:8080/pies/meet?weight=999&orderedFor=Serhos
 Content-Type: application/json
 
 ###
-GET http://localhost:8080/pies/all?orderedFor=Customer%2073
+GET http://localhost:8080/pies/all/Serhos
 Content-Type: application/json

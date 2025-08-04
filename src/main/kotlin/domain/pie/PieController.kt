@@ -1,23 +1,31 @@
 package com.example.demo.domain.pie
 
-import com.example.demo.domain.pie.dto.MeetPie
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.RestController
+import com.example.demo.domain.pie.dto.MeetPieDto
+import com.example.demo.domain.pie.dto.PieDto
+import com.example.demo.domain.pie.mapping.PieResponseMapper
+import ru.tinkoff.kora.common.Component
+import ru.tinkoff.kora.common.Mapping
+import ru.tinkoff.kora.http.common.HttpMethod.GET
+import ru.tinkoff.kora.http.common.annotation.HttpRoute
+import ru.tinkoff.kora.http.common.annotation.Path
+import ru.tinkoff.kora.http.common.annotation.Query
+import ru.tinkoff.kora.http.server.common.annotation.HttpController
 import java.time.LocalDateTime
 
-@RestController
-@RequestMapping("/pies")
+@Component
+@HttpController
 class PieController(private val pieRepository: PieRepository) {
 
-    @GetMapping("/meet")
-    fun getPie(@RequestParam weight: Int, @RequestParam orderedFor: String): MeetPie {
-        return MeetPie(weight = weight, orderedFor = orderedFor, bakedAt = LocalDateTime.now())
+    // Hello world веб приложения. Контроллер работает, отдает принятые параметры в ответе
+    @HttpRoute(method = GET, path = "/pies/meet")
+    fun getPie(@Query weight: Int, @Query orderedFor: String): String {
+        return MeetPieDto(weight = weight, orderedFor = orderedFor, bakedAt = LocalDateTime.now()).toString();
     }
 
-    @GetMapping("/all")
-    fun getPies(@RequestParam orderedFor: String): List<MeetPie> {
+    // Проверка работы с БД
+    @Mapping(PieResponseMapper::class)
+    @HttpRoute(method = GET, path = "/pies/all/{orderedFor}")
+    fun getPies(@Path("orderedFor") orderedFor: String): List<PieDto> {
         return pieRepository.findPies(orderedFor)
     }
 }

@@ -1,27 +1,25 @@
 package com.example.demo.domain.pie
 
-import com.example.demo.domain.pie.dto.MeetPie
-import org.springframework.jdbc.core.JdbcTemplate
-import org.springframework.stereotype.Repository
+import com.example.demo.domain.pie.dto.PieDto
+import ru.tinkoff.kora.common.Mapping
+import ru.tinkoff.kora.database.common.annotation.Query
+import ru.tinkoff.kora.database.common.annotation.Repository
+import ru.tinkoff.kora.database.jdbc.JdbcRepository
+import ru.tinkoff.kora.database.jdbc.mapper.result.JdbcRowMapper
 import java.sql.ResultSet
+import java.sql.SQLException
 
 @Repository
-class PieRepository(private val jdbcTemplate: JdbcTemplate) {
+interface PieRepository : JdbcRepository {
+    @Mapping(PieResultMapper::class)
+    @Query("SELECT weight, ordered_for FROM smarkov.pie WHERE ordered_for = :orderedFor")
+    fun findPies(orderedFor: String): List<PieDto>
+}
 
-    fun findPies(orderedFor: String): List<MeetPie> {
-        val sql = "SELECT * FROM smarkov.pie WHERE ordered_for = ?"
+class PieResultMapper : JdbcRowMapper<PieDto> {
 
-        return try {
-            jdbcTemplate.query(
-                sql,
-                { rs: ResultSet, rowNum: Int ->
-                    MeetPie(rs.getInt("weight"), rs.getString("ordered_for"))
-                },
-                orderedFor
-            )
-        } catch (e: Exception) {
-            e.printStackTrace()
-            emptyList()
-        }
+    @Throws(SQLException::class)
+    override fun apply(rs: ResultSet): PieDto {
+        return PieDto(weight = rs.getInt("weight"), orderedFor = rs.getString("ordered_for"))
     }
 }
