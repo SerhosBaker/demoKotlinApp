@@ -22,9 +22,9 @@ class PieController(private val pieRepository: PieRepository) {
         return MeetPie(weight = weight, orderedFor = orderedFor, bakedAt = LocalDateTime.now(), id = "1").toString();
     }
 
-    //@Mapping(PieResponseMapper::class)
+    @Mapping(PieResponseMapper::class)
     @HttpRoute(method = GET, path = "/pies/all/{orderedFor}")
-    fun getPies(@Path("orderedFor") orderedFor: String): String {
+    fun getPies(@Path("orderedFor") orderedFor: String): List<String> {
         return pieRepository.findPies(orderedFor)
     }
 }

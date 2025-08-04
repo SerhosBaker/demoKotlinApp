@@ -7,6 +7,7 @@ import ru.tinkoff.kora.database.common.annotation.Query
 import ru.tinkoff.kora.database.common.annotation.Repository
 import ru.tinkoff.kora.database.jdbc.JdbcRepository
 import ru.tinkoff.kora.database.jdbc.mapper.result.JdbcResultSetMapper
+import ru.tinkoff.kora.database.jdbc.mapper.result.JdbcRowMapper
 import java.sql.ResultSet
 import java.sql.SQLException
 
@@ -14,10 +15,10 @@ import java.sql.SQLException
 interface PieRepository : JdbcRepository {
     @Mapping(PieResultMapper::class)
     @Query("SELECT ordered_for FROM smarkov.pie WHERE ordered_for = :orderedFor")
-    fun findPies(orderedFor: String): String
+    fun findPies(orderedFor: String): List<String>
 }
 
-class PieResultMapper : JdbcResultSetMapper<String> {
+class PieResultMapper : JdbcRowMapper<String> {
 
     @Throws(SQLException::class)
     override fun apply(rs: ResultSet): String {

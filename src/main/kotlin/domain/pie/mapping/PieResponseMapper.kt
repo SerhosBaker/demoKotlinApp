@@ -7,10 +7,9 @@ import ru.tinkoff.kora.http.server.common.HttpServerRequest
 import ru.tinkoff.kora.http.server.common.HttpServerResponse
 import ru.tinkoff.kora.http.server.common.handler.HttpServerResponseMapper
 
-class PieResponseMapper : HttpServerResponseMapper<String> {
-    override fun apply(ctx: Context?, request: HttpServerRequest?, result: String?): HttpServerResponse {
-        //val body = result?.joinToString("\n") { it }
-        return HttpServerResponse.of(200, HttpBody.plaintext(result));
+class PieResponseMapper : HttpServerResponseMapper<List<String>> {
+    override fun apply(ctx: Context?, request: HttpServerRequest?, result: List<String>?): HttpServerResponse {
+        val body = result?.joinToString("\n") { it }
+        return HttpServerResponse.of(200, HttpBody.plaintext(body));
     }
-
 }
