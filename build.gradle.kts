@@ -17,7 +17,6 @@ version = "0.0.1-SNAPSHOT"
 
 application {
     applicationName = "application"
-//    mainClass = "com.example.demo.ApplicationKt"
     applicationDefaultJvmArgs = listOf("-Dfile.encoding=UTF-8")
 }
 
@@ -83,10 +82,3 @@ dependencies {
     // Postgres
     implementation("org.postgresql:postgresql:42.7.3")
 }
-//
-//tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-//    kotlinOptions {
-//        freeCompilerArgs += "-Xjsr305=strict"
-//        jvmTarget = "21"
-//    }
-//}

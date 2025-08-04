@@ -2,9 +2,8 @@ package com.example.demo.domain.pie.dto
 
 import java.time.LocalDateTime
 
-data class MeetPie(
-    val weight: Int,
-    val orderedFor: String,
+data class MeetPieDto(
     val bakedAt: LocalDateTime = LocalDateTime.now(),
-    override val id: String
-) : Pie(id)
+    override val weight: Int,
+    override val orderedFor: String
+) : PieDto(weight, orderedFor)
