@@ -81,4 +81,12 @@ dependencies {
 
     // Postgres
     implementation("org.postgresql:postgresql:42.7.3")
+
+    //Tests
+    testImplementation("org.junit.jupiter:junit-jupiter:5.9.3")
+    testImplementation("org.assertj:assertj-core:3.26.3")
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
