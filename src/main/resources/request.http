@@ -5,3 +5,35 @@ Content-Type: application/json
 ###
 GET http://localhost:8080/pies/all/Serhos
 Content-Type: application/json
+
+
+
+###
+
+# curl -X POST "https://tpe-cards-test.dev.t-tech.team/info-rps/api/clients/get_client_id_by_acc_number" -H "accept: */*" -H "Content-Type: application/json" -d "{ \"trace_id\": \"7f4d4490-b66f-4f9b-96a8-11ea3bb42a36\", \"user_info\": \"CAEN\", \"account_number\": \"string\"}"
+POST http://localhost:49543/info-rps/api/clients/get_client_id_by_acc_number
+accept: */*
+Content-Type: application/json
+
+{
+  "trace_id": "7f4d4490-b66f-4f9b-96a8-11ea3bb42a36",
+  "user_info": "CAEN",
+  "account_number": "string"
+}
+
+####
+#HTTP/1.1 200 OK
+#Content-Type: application/json
+#Matched-Stub-Id: 32674184-335a-4e70-ab1d-6399a1baa52d
+#Vary: Accept-Encoding, User-Agent
+#Content-Encoding: gzip
+#Transfer-Encoding: chunked
+#
+#{
+#  "code": 1,
+#  "message": "Success",
+#  "traceId": "1234567890",
+#  "userInfo": "User Name",
+#  "clientId": "1234567890"
+#}
+#Response file saved.
