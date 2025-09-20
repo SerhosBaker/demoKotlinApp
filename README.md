@@ -1,17 +1,24 @@
 # demoKotlinApp
 My demo app to study kotlin
 
-В качестве БД на данный момент используется экземпляр тестовой БД Образования. Однако выделил в нем отдельную схему smarkov.
+БД поднимается на docker-compose. Не забудь поднять при старте проекта. Затем выполнит этот SQL
 
 ```sql
-create table smarkov.pie
+CREATE SCHEMA IF NOT EXISTS smarkov;
+
+CREATE TABLE IF NOT EXISTS smarkov.orders
+(
+    id          UUID PRIMARY KEY,
+    weight      INT,
+    ordered_for VARCHAR(255),
+    baked_at    TIMESTAMP
+);
+
+CREATE TABLE   IF NOT EXISTS  smarkov.pie
 (
     weight      integer,
     ordered_for text
 );
-
-alter table smarkov.pie
-    owner to liquibase;
 
 INSERT INTO smarkov.pie (weight, ordered_for)
 SELECT
