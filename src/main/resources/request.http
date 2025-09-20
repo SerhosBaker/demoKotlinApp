@@ -1,5 +1,5 @@
 ###
-POST http://localhost:8080/pies/meet?weight=999&orderedFor=Serhos
+GET http://localhost:8080/pies/meet?weight=999&orderedFor=Serhos
 Content-Type: application/json
 
 ###
