@@ -7,6 +7,7 @@ import com.example.demo.domain.pie.dto.PieDto
 import org.junit.jupiter.api.Test
 import org.mockito.Mock
 import org.mockito.Mockito
+import org.mockito.Mockito.*
 
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
@@ -14,7 +15,7 @@ import kotlin.test.assertNotNull
 
 class PieVerificationTest {
 
-    private var pieRepository: PieRepository = Mockito.mock(PieRepository::class.java)
+    private var pieRepository: PieRepository = mock(PieRepository::class.java)
     private var pieController = PieController(pieRepository)
 
     @Test
@@ -41,7 +42,7 @@ class PieVerificationTest {
                     PieDto(weight = 100, orderedFor = "Sergey"),
                     PieDto(weight = 200, orderedFor = "Sergey")
                 )
-                Mockito.`when`(pieRepository.findPies("Sergey")).thenReturn(givenPies)
+                `when`(pieRepository.findPies("Sergey")).thenReturn(givenPies)
             }
             whenEx {
                 pieController.getPies("Sergey")
