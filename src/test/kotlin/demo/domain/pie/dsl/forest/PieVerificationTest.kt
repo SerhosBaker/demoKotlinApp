@@ -9,6 +9,7 @@ import org.mockito.Mock
 import org.mockito.Mockito
 
 import kotlin.test.assertEquals
+import kotlin.test.assertNotNull
 
 
 class PieVerificationTest {
@@ -45,11 +46,10 @@ class PieVerificationTest {
             whenEx {
                 pieController.getPies("Sergey")
             }
-            then { result ->
-                val pies = result as? List<PieDto>
-                    ?: throw AssertionError("Result is not List<PieDto>")
-
-                assertEquals(2, pies.size)
+            then { pies: List<PieDto>? ->
+                assertNotNull(pies)
+                val size = pies.size
+                assertEquals(2, size)
                 println("Then: result is $pies")
             }
         }
