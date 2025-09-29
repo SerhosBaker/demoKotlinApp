@@ -15,8 +15,11 @@ class Verifier<WhenT> : Dsl {
         return this
     }
 
-    fun then(block: (WhenT?) -> Unit): Verifier<WhenT> {
-        thenAction = block
+    fun then(block: ResultScope<WhenT?>.() -> Unit): Verifier<WhenT> {
+        thenAction = {
+            val scope = ResultScope<WhenT?>(it)
+            scope.block()
+        }
         return this
     }
 

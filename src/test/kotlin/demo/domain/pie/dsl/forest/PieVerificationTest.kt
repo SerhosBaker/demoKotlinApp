@@ -5,12 +5,9 @@ import com.example.demo.domain.pie.PieRepository
 import com.example.demo.domain.pie.dsl.test
 import com.example.demo.domain.pie.dto.PieDto
 import org.junit.jupiter.api.Test
-import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.Mockito.*
 
 import kotlin.test.assertEquals
-import kotlin.test.assertNotNull
 
 
 class PieVerificationTest {
@@ -27,9 +24,10 @@ class PieVerificationTest {
             whenEx {
                 2 + 2
             }
-            then { result ->
-                assertEquals(4, result)
-                println("Then: result is $result")
+            then {
+                result {
+                    isEqualTo(4)
+                }
             }
         }
     }
@@ -47,11 +45,12 @@ class PieVerificationTest {
             whenEx {
                 pieController.getPies("Sergey")
             }
-            then { pies: List<PieDto>? ->
-                assertNotNull(pies)
-                val size = pies.size
-                assertEquals(2, size)
-                println("Then: result is $pies")
+            then {
+                result {
+                    size {
+                        assertEquals(2, it)
+                    }
+                }
             }
         }
     }
