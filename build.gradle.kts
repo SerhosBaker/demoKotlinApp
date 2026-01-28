@@ -75,6 +75,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlin:kotlin-test-junit5")
     implementation("junit:junit:4.13.2")
+    implementation("org.mockito:mockito-core:5.12.0")
 
     implementation("com.fasterxml.jackson.core:jackson-databind:2.17.3")
     implementation("com.fasterxml.jackson.core:jackson-annotations:2.17.3")

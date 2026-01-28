@@ -5,7 +5,7 @@ import utils.TestContext
 
 class TestActionsTest {
     @Test
-    fun test() {
+    fun `test passing some actions as method input params`() {
         val context = TestContext()
 
         context.runTest {
@@ -22,8 +22,8 @@ class TestActionsTest {
                 increment(2)
                 increment(3)
                 increment(4)
-                incrementViaReturn(5) // что интересно. Функция sumInt требовала void, но метод с возвращаемым значением тоже работает
-                incrementOne() // и метод без параметров тоже работает. На этом моменте я перестал что-либо понимать
+                incrementViaReturn(5) // что интересно. Функция sumInts требовала void, но метод с возвращаемым значением Int тоже работает
+                incrementOne() // и метод без параметров тоже можно передать в sumInts.
             }
 
             println("суммирование: $result")

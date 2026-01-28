@@ -5,6 +5,7 @@ pluginManagement {
         maven {
             setUrl("https://artifactory.tcsbank.ru/artifactory/maven-all")
         }
+        mavenLocal()
     }
 }
 
@@ -13,6 +14,7 @@ buildscript {
         maven {
             setUrl("https://artifactory.tcsbank.ru/artifactory/maven-all")
         }
+        mavenLocal()
     }
 }
 
@@ -21,5 +23,6 @@ dependencyResolutionManagement {
         maven {
             setUrl("https://artifactory.tcsbank.ru/artifactory/maven-all")
         }
+        mavenLocal()
     }
 }

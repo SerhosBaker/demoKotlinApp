@@ -26,7 +26,7 @@ class EnumUtilTest {
     }
 
     @Test
-    fun testDateTime(){
+    fun `test DateTime assertions`(){
         val zonedDateTime: ZonedDateTime = ZonedDateTime.parse("2000-01-01T00:00:00Z")
 
         assertThat(zonedDateTime).isCloseTo(zonedDateTime.plusHours(1), within(90, ChronoUnit.MINUTES))

@@ -1,6 +1,6 @@
 package utils
 
-import demo.model.IntegerWrap
+import demo.model.IntegerWrapTest
 
 class TestDsl {
     fun concatenateStrings(action: StringBuilder.() -> Unit): String {
@@ -9,8 +9,8 @@ class TestDsl {
         return sb.toString()
     }
 
-    fun sumInts(action: IntegerWrap.() -> Unit): Int { // расширяем класс IntegerWrap. Но принимаем методы лишь заданной сигнатуры
-        val id = IntegerWrap(0)
+    fun sumInts(action: IntegerWrapTest.() -> Unit): Int { // расширяем класс IntegerWrap. Но принимаем методы лишь заданной сигнатуры
+        val id = IntegerWrapTest(0)
         id.action()
         return id.getValue()
     }
