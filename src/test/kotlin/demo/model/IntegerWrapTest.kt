@@ -1,8 +1,8 @@
 package demo.model
 
-class IntegerWrap(private var value: Int) {
+class IntegerWrapTest(private var value: Int) {
 
-    fun increment(param: Int): IntegerWrap {
+    fun increment(param: Int): IntegerWrapTest {
         value += param
         return this
     }
@@ -11,7 +11,7 @@ class IntegerWrap(private var value: Int) {
         value += param
         return value
     }
-    fun incrementOne(): IntegerWrap {
+    fun incrementOne(): IntegerWrapTest {
         value += 1
         return this
     }

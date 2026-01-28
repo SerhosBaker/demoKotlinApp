@@ -7,9 +7,9 @@ import com.example.demo.domain.pie.dsl.forest.zontainer
 import org.junit.jupiter.api.Test
 import java.util.HashMap
 
-class ForestRunner {
+class ForestRunnerTest {
     @Test
-    fun testZontainer() {
+    fun `test simple DSL structs`() {
         val sergey = SergeyStruct()
 
         zontainer {
@@ -30,7 +30,7 @@ class ForestRunner {
     }
 
     @Test
-    fun test() {
+    fun `test different DSL structs`() {
         val struct =
             struct {
                 +{ "field1" to 1 }

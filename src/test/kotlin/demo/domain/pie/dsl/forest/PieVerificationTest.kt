@@ -7,16 +7,14 @@ import com.example.demo.domain.pie.dto.PieDto
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.*
 
-import kotlin.test.assertEquals
-
 
 class PieVerificationTest {
 
-//    private var pieRepository: PieRepository = mock(PieRepository::class.java)
-//    private var pieController = PieController(pieRepository)
+    private var pieRepository: PieRepository = mock(PieRepository::class.java)
+    private var pieController = PieController(pieRepository)
 
     @Test
-    fun `should add two numbers`() {
+    fun `look then result isEqualTo`() {
         test {
             given {
                 println("Given: preparing data")
@@ -32,26 +30,26 @@ class PieVerificationTest {
         }
     }
 
-//    @Test
-//    fun `should return pies`() {
-//        test {
-//            given {
-//                val givenPies = listOf(
-//                    PieDto(weight = 100, orderedFor = "Sergey"),
-//                    PieDto(weight = 200, orderedFor = "Sergey")
-//                )
-//                `when`(pieRepository.findPies("Sergey")).thenReturn(givenPies)
-//            }
-//            whenEx {
-//                pieController.getPies("Sergey")
-//            }
-//            then {
-//                result {
-//                    size {
-//                        assertEquals(2, it)
-//                    }
-//                }
-//            }
-//        }
-//    }
+    @Test
+    fun `look then result size isEqualTo`() {
+        test {
+            given {
+                val givenPies = listOf(
+                    PieDto(weight = 100, orderedFor = "Sergey"),
+                    PieDto(weight = 200, orderedFor = "Sergey")
+                )
+                `when`(pieRepository.findPies("Sergey")).thenReturn(givenPies)
+            }
+            whenEx {
+                pieController.getPies("Sergey")
+            }
+            then {
+                result {
+                    size {
+                        isEqualTo(2)
+                    }
+                }
+            }
+        }
+    }
 }

@@ -12,10 +12,11 @@ class ResultScope<T>(private val value: T?) {
         }
     }
 
-    val size: Int get() = (value as? Collection<*>)?.size ?: error("Value is not a collection")
+    //   val size: Int get() = (value as? Collection<*>)?.size ?: error("Value is not a collection")
 
-    fun size(block: Int.() -> Unit): ResultScope<T> {
-        size.block()
+    fun size(block: ResultScope<Int>.() -> Unit): ResultScope<T> {
+        val collectionSize = (value as? Collection<*>)?.size ?: error("Value is not a collection")
+        ResultScope(collectionSize).block()
         return this
     }
 

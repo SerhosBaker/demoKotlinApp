@@ -16,13 +16,13 @@ import java.time.LocalDateTime
 @HttpController
 class PieController(private val pieRepository: PieRepository) {
 
-    // Hello world веб приложения. Контроллер работает, отдает принятые параметры в ответе
+    // Hello world веб приложения. Контроллер работает, в ответе отдает параметры запроса, зеркалит
     @HttpRoute(method = GET, path = "/pies/meet")
     fun getPie(@Query weight: Int, @Query orderedFor: String): String {
         return MeetPieDto(weight = weight, orderedFor = orderedFor, bakedAt = LocalDateTime.now()).toString();
     }
 
-    // Проверка работы с БД
+    // Проверяет работу с БД
     @Mapping(PieResponseMapper::class)
     @HttpRoute(method = GET, path = "/pies/all/{orderedFor}")
     fun getPies(@Path("orderedFor") orderedFor: String): List<PieDto> {
