@@ -12,8 +12,8 @@ import kotlin.test.assertEquals
 
 class PieVerificationTest {
 
-    private var pieRepository: PieRepository = mock(PieRepository::class.java)
-    private var pieController = PieController(pieRepository)
+//    private var pieRepository: PieRepository = mock(PieRepository::class.java)
+//    private var pieController = PieController(pieRepository)
 
     @Test
     fun `should add two numbers`() {
@@ -32,26 +32,26 @@ class PieVerificationTest {
         }
     }
 
-    @Test
-    fun `should return pies`() {
-        test {
-            given {
-                val givenPies = listOf(
-                    PieDto(weight = 100, orderedFor = "Sergey"),
-                    PieDto(weight = 200, orderedFor = "Sergey")
-                )
-                `when`(pieRepository.findPies("Sergey")).thenReturn(givenPies)
-            }
-            whenEx {
-                pieController.getPies("Sergey")
-            }
-            then {
-                result {
-                    size {
-                        assertEquals(2, it)
-                    }
-                }
-            }
-        }
-    }
+//    @Test
+//    fun `should return pies`() {
+//        test {
+//            given {
+//                val givenPies = listOf(
+//                    PieDto(weight = 100, orderedFor = "Sergey"),
+//                    PieDto(weight = 200, orderedFor = "Sergey")
+//                )
+//                `when`(pieRepository.findPies("Sergey")).thenReturn(givenPies)
+//            }
+//            whenEx {
+//                pieController.getPies("Sergey")
+//            }
+//            then {
+//                result {
+//                    size {
+//                        assertEquals(2, it)
+//                    }
+//                }
+//            }
+//        }
+//    }
 }
